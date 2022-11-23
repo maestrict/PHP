@@ -3,7 +3,7 @@
 
 function recupAllInfoAdmin(){
   include('connection.php');
-  $query = "SELECT * FROM test.prof";
+  $query = "SELECT * FROM test.user";
   $query_params = array();
   try
   {

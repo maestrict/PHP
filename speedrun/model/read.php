@@ -69,5 +69,37 @@ function readLastIdPicture(){
     return (!empty($result)) ? $result: 'NULL';
 
   }
+
+  function ReadAllRunNoValidation(){
+    include_Once('connection.php');
+    $query = "SELECT * FROM Run WHERE validation = :validation ";
+    $query_params = array(':validation'=>NULL);
+    try
+    {
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute($query_params);
+    }
+    catch(PDOException $ex){
+        die("Failed query : " . $ex->getMessage());
+    }
+    $result = $stmt->fetchall();
+    return (!empty($result)) ? $result: 'NULL';
+  } 
+
+  function readMyRuns($idUser){
+    include_Once('connection.php');
+    $query = "SELECT * FROM Run WHERE idUser = :idUser ";
+    $query_params = array(':idUser'=>$idUser);
+    try
+    {
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute($query_params);
+    }
+    catch(PDOException $ex){
+        die("Failed query : " . $ex->getMessage());
+    }
+    $result = $stmt->fetchall();
+    return (!empty($result)) ? $result: 'NULL';
+  }
  
  ?>

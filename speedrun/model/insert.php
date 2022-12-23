@@ -126,6 +126,20 @@ function insertAdmin($nom, $prenom, $dateNaiss, $pseudo, $mdp, $email){
     }
   }
 
+  function insertRemarqueRUn($idRun, $remarque){
+
+    include('connection.php');
+    $query = "INSERT INTO Remarque (message,idRun) VALUES(:message,:idRun)";
+    $query_params = array(':message'=>$remarque,
+                          ':idRun'=>$idRun);
+    try{
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute($query_params);
+    }
+    catch(PDOException $ex){
+        die("Failed query : " . $ex->getMessage());
+    }
+  }
 
 
  ?>

@@ -14,7 +14,4 @@ function deleteRun($idRun){
   }
 
 
-
-
-
  ?>
